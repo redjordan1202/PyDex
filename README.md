@@ -29,3 +29,4 @@ Cyndaquil's pokedex number is: 155
 The Pokeball cost: 200
 The Chesto berry's firmness is: super-hard
 ```
+
