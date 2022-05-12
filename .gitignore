@@ -133,3 +133,6 @@ dmypy.json
 
 #vscode folder
 /.vscode
+
+#test scripts
+test*.py
