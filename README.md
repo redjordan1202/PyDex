@@ -8,18 +8,24 @@ PyDex is a python wrapper for the PokéAPI RESTful api.
 ```python
 import pydex as pd
 
-cyndaquil = pd.Pokemon(name="cyndaquil")
-cyndaquil.lookup_pokemon()
+#Create a Pokemon Object
+cyndaquil = pd.Pokemon('cyndaquil')
 
-pokeball = pd.Item(name="poke-ball")
-pokeball.lookup_item()
+#Create an item Object
+pokeball = pd.Item('poke-ball')
 
-print(cyndaquil.stats["HP"])
-print(pokeball.cost)
+#Create an berry Object
+chesto = pd.Berry('chesto')
+
+
+print("Cyndaquil's pokedex number is:", cyndaquil.number)
+print("The Pokeball cost:", pokeball.cost)
+print("The Chesto berry's firmness is:", chesto.firmness)
 ```
 
 ### Output
-```python
-39
-200
+```
+Cyndaquil's pokedex number is: 155
+The Pokeball cost: 200
+The Chesto berry's firmness is: super-hard
 ```
