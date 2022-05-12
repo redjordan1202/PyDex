@@ -88,7 +88,6 @@ class Pokemon():
         if len(species_data["egg_groups"]) == 2:
             self.egg_group_2 = species_data["egg_groups"][1]["name"]
 
-
 class Item():
     def __init__(self, name):
 
@@ -128,10 +127,84 @@ class Item():
         self.fling_effect = item_data["fling_effect"]
         self.held_by = item_data["held_by_pokemon"]
 
+class Berry():
+    def __init__(self,name):
+        self.name = name
+        self.id = 0
+        self.flavors = {
+            "Spicy" : 0,
+            "Dry" : 0,
+            "Sweet" : 0,
+            "Bitter" : 0,
+            "Sour" : 0,
+        }
+        self.firmness = 0
+        self.size = 0
+        self.smoothness = 0
+        self.natural_gift_power = 0
+        self.natural_gift_type = None
+        self.max_harvest = 0
+
+        self.item_url = 0
+        self.cost = 0
+        self.attribute = []
+        self.category = None
+        self.baby_trigger_for = None
+        self.effect = None
+        self.short_effect = None
+        self.fling_power = 0
+        self.fling_effect = None
+        self.held_by = None
+
+    def lookup_berry(self):
+        global URL
+        berry_response = requests.get((URL.format(category="berry",search=self.name)))
+        
+
+        if "Not Found" in berry_response.text:
+            raise BerryNotFound(self.name)
+        else:
+            berry_data = berry_response.json()
+            
+        self.id = berry_data["id"]
+        self.flavors["Spicy"] = berry_data["flavors"][0]["potency"]
+        self.flavors["Dry"] = berry_data["flavors"][1]["potency"]
+        self.flavors["Sweet"] = berry_data["flavors"][2]["potency"]
+        self.flavors["Bitter"] = berry_data["flavors"][3]["potency"]
+        self.flavors["Sour"] = berry_data["flavors"][4]["potency"]
+        self.firmness = berry_data["firmness"]["name"]
+        self.size = berry_data["size"]
+        self.smoothness = berry_data["smoothness"]
+        self.natural_gift_power = berry_data["natural_gift_power"]
+        self.natural_gift_type = berry_data["natural_gift_type"]["name"]
+
+        self.item_url = berry_data["item"]["url"]
+
+        berry_item_response = requests.get(url=self.item_url)
+        if "Not Found" in berry_item_response.text:
+            raise BerryItemNotFound(self.name)
+        else:
+            berry_item_data = berry_item_response.json()
+
+        self.cost = berry_item_data["cost"]
+        for attribute in berry_item_data["attributes"]:
+            self.attribute.append(attribute["name"])
+        self.category = berry_item_data["category"]["name"]
+        self.baby_trigger_for = berry_item_data["baby_trigger_for"]
+        self.effect = berry_item_data["effect_entries"][0]["effect"]
+        self.short_effect = berry_item_data["effect_entries"][0]["short_effect"]
+        self.fling_power = berry_item_data["fling_power"]
+        self.fling_effect = berry_item_data["fling_effect"]
+        self.held_by = berry_item_data["held_by_pokemon"]
+
+
+
+
 def main():
     #testing functions and classes
-    masterball = Item(name="maste-ball")
-    masterball.lookup_item()
+    chesto = Berry('chesto')
+    chesto.lookup_berry()
+
 
 
 if __name__ == "__main__":

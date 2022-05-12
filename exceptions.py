@@ -16,6 +16,28 @@ class ItemNotFound(Exception):
     def __str__(self):
         return f'{self.item} -> {self.message}'
 
+class BerryNotFound(Exception):
+    def __init__(self, berry, message="Berry not found"):
+        self.berry = berry
+        self.message = message
+        super().__init__(self.message)
+    
+    def __str__(self):
+        return f'{self.berry} -> {self.message}'
+
+class BerryItemNotFound(Exception):
+    def __init__(
+        self,
+        berry,
+        message="Berry item not found\nThe item page for this berry might be missing"
+    ):
+        self.berry = berry
+        self.message = message
+        super().__init__(self.message)
+    
+    def __str__(self):
+        return f'{self.berry} -> {self.message}'
+
 class ItemNameError(Exception):
     def __init__(
         self, 
