@@ -1,5 +1,6 @@
 import requests
 import argparse
+from exceptions import *
 
 parser = argparse.ArgumentParser()
 URL = "https://pokeapi.co/api/v2/{category}/{search}"
@@ -42,13 +43,12 @@ class Pokemon():
 
     def lookup_pokemon(self):
         global URL
-        try:
-            pokemon_response = requests.get(URL.format(category="pokemon",search=self.name))
-            species_response = requests.get(URL.format(category="pokemon-species",search=self.name))
-            stat_response = (URL.format(category="stat",search=self.name))
-        except:
-            print("Pokemon Not Found. Please check the name")
-            return
+
+        pokemon_response = requests.get(URL.format(category="pokemon",search=self.name))
+        species_response = requests.get(URL.format(category="pokemon-species",search=self.name))
+
+        if "Not Found" in pokemon_response.text:
+            raise PokemonNotFound(self.name)
         else:
             pokemon_data = pokemon_response.json()
             species_data = species_response.json()
@@ -91,6 +91,10 @@ class Pokemon():
 
 class Item():
     def __init__(self, name):
+
+        if " " in name:
+            raise ItemNameError(name)
+
         self.name = name
         self.id = None
         self.cost = 0
@@ -105,10 +109,10 @@ class Item():
 
     def lookup_item(self):
         global URL
-        try:
-            item_response = requests.get((URL.format(category="item",search=self.name)))
-        except:
-            print("Item not found. Please Check Spelling")
+        item_response = requests.get((URL.format(category="item",search=self.name)))
+
+        if "Not Found" in item_response.text:
+            raise ItemNotFound(self.name)
         else:
             item_data = item_response.json()
 
@@ -124,15 +128,10 @@ class Item():
         self.fling_effect = item_data["fling_effect"]
         self.held_by = item_data["held_by_pokemon"]
 
-
-
-
 def main():
     #testing functions and classes
-    masterball = Item("master-ball")
+    masterball = Item(name="maste-ball")
     masterball.lookup_item()
-    print(masterball.name)
-    print(masterball.effect)
 
 
 if __name__ == "__main__":
