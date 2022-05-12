@@ -41,6 +41,8 @@ class Pokemon():
         self.egg_group_1 = None
         self.egg_group_2 = None
 
+        self.lookup_pokemon()
+
     def lookup_pokemon(self):
         global URL
 
@@ -106,6 +108,8 @@ class Item():
         self.fling_effect = None
         self.held_by = None
 
+        self.lookup_item()
+
     def lookup_item(self):
         global URL
         item_response = requests.get((URL.format(category="item",search=self.name)))
@@ -156,6 +160,8 @@ class Berry():
         self.fling_effect = None
         self.held_by = None
 
+        self.lookup_berry()
+    
     def lookup_berry(self):
         global URL
         berry_response = requests.get((URL.format(category="berry",search=self.name)))
@@ -202,8 +208,14 @@ class Berry():
 
 def main():
     #testing functions and classes
+    cyndaquil = Pokemon('cyndaquil')
+    print(cyndaquil.number)
+
+    pokeball = Item('poke-ball')
+    print(pokeball.cost)
+
     chesto = Berry('chesto')
-    chesto.lookup_berry()
+    print(chesto.firmness)
 
 
 
