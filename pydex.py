@@ -1,8 +1,6 @@
 import requests
-import requests_cache
 import argparse
 
-requests_cache.install_cache('poke_cache')
 parser = argparse.ArgumentParser()
 URL = "https://pokeapi.co/api/v2/{category}/{search}"
 
