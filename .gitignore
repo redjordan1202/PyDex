@@ -130,3 +130,6 @@ dmypy.json
 
 #cached info
 *.sqlite
+
+#vscode folder
+/.vscode
