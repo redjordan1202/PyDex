@@ -101,7 +101,6 @@ class Item():
         self.cost = 0
         self.attribute = []
         self.category = None
-        self.baby_trigger_for = None
         self.effect = None
         self.short_effect = None
         self.fling_power = 0
@@ -124,7 +123,6 @@ class Item():
         for attribute in item_data["attributes"]:
             self.attribute.append(attribute["name"])
         self.category = item_data["category"]["name"]
-        self.baby_trigger_for = item_data["baby_trigger_for"]
         self.effect = item_data["effect_entries"][0]["effect"]
         self.short_effect = item_data["effect_entries"][0]["short_effect"]
         self.fling_power = item_data["fling_power"]
