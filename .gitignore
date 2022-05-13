@@ -131,8 +131,10 @@ dmypy.json
 #cached info
 *.sqlite
 
-#vscode folder
-/.vscode
+#vscode directories and files
+.vscode/
+*.code-workspace
+
 
 #test scripts
 test*.py
