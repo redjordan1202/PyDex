@@ -1,15 +1,15 @@
-# pokedex_py
+# cyndaquil
 ----
 
 PyDex is a python wrapper for the PokéAPI RESTful api. 
 
 ## Important Notice
 ----  
-pokedex_py is currently still in development. As of right now the basics are there, however its still very much work in progress.  
+cyndaquil is currently still in development. As of right now the basics are there, however its still very much work in progress.  
 You should have no issues using the package as showing in the Usage section below. However bugs and other issues may show up.
 
 ### All info is pulled from PokéAPI  
-That means the info provided by pokedex_py is as accurate as the info on PokéAPI.
+That means the info provided by cyndaquil is as accurate as the info on PokéAPI.
 If you do find any error in the data provided please open an issue on the [PokéAPI github page](https://github.com/PokeAPI/pokedex/issues)
 
 
@@ -29,7 +29,7 @@ As additional versions of Python are tested they will be added to list of workin
 Installation is done through pip. Run the pip command below to install module.  
 
 ```
-pip install pokedex_py
+pip install cyndaquil
 ```
 
 ### What if that doesn't work?  
@@ -51,16 +51,16 @@ This module provides a very class based lookup method for Pokemon, Berries and I
 Below is a simple example of what you can use the program for.
 
 ```python
-import pokedex_py as pd
+import cyndaquil as cy
 
 #Create a Pokemon Object
-cyndaquil = pd.Pokemon('cyndaquil')
+cyndaquil = cy.Pokemon('cyndaquil')
 
 #Create an item Object
-pokeball = pd.Item('poke-ball')
+pokeball = cy.Item('poke-ball')
 
 #Create an berry Object
-chesto = pd.Berry('chesto')
+chesto = cy.Berry('chesto')
 
 
 print("Cyndaquil's pokedex number is:", cyndaquil.number)
@@ -78,7 +78,7 @@ The Chesto berry's firmness is: super-hard
 ## What info can I look up?
 ----
 I tried to include as much info as I could. However, a few things are still missing.
-Below is a list of all the info you can currently pull from PokéAPI with pokedex_py
+Below is a list of all the info you can currently pull from PokéAPI with cyndaquil
 
 ### Pokemon
 - Pokedex Number
@@ -123,7 +123,7 @@ Below is a list of all the info you can currently pull from PokéAPI with pokede
 The goals for this project are to make it an all in one look up for any info listed on PokéAPI. This includes things like type, abilities, sprites and much much more.
 
 ### Roadmap
-Below is a general roadmap of planned features and updates. 
+Below is a general roadmap of planned features and ucyates. 
 - List all held by Pokemon for items and berries
 - Allow look up of sprites for Pokemon
 - Allow look up of sprites for Items
