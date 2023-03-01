@@ -1,7 +1,7 @@
 # cyndaquil
 ----
 
-PyDex is a python wrapper for the PokéAPI RESTful api. 
+cyndaquil is a python wrapper for the PokéAPI RESTful api. 
 
 ## Important Notice
 ----  
